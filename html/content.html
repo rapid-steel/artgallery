@@ -1,0 +1,75 @@
+<div ng-app="gallery" ng-controller="userContr">
+
+
+
+    <div class="col-md-12 col-xs-12 menu">
+
+        <div class="col-md-2 col-sm-2 col-xs-4">
+            <a href="#!/" title="Main">
+                <div class="glyphicon glyphicon-tree-conifer small hidden-xs hidden-sm"></div>
+                <div class="glyphicon glyphicon-tree-conifer"></div>
+                <div class="glyphicon glyphicon-tree-deciduous"></div>
+                <div class="glyphicon glyphicon-tree-conifer"></div>
+                <div class="glyphicon glyphicon-tree-conifer small hidden-xs hidden-sm"></div>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-4">
+            <a href="#!/home" title="Homepage">
+                <div class="glyphicon glyphicon-tree-conifer small"></div>
+                <div class="glyphicon glyphicon-home"></div>
+                <div class="glyphicon glyphicon-tree-conifer small"></div>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-4">
+            <a href="#!/favorites" title="Favorites">
+                <div class="glyphicon glyphicon-picture"></div>
+                <div class="glyphicon glyphicon-bookmark"></div>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-4">
+            <a href="#!/load" title="Submit image"><div class="glyphicon glyphicon-plus"></div></a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-4">
+            <a href="#!/subscribes" title="{{user.subscribes_count}} new submits">
+                <span>{{user.subscribes_count}}</span>
+                <div class="glyphicon" ng-class="user.subscribes_count!=0? 'glyphicon-star' : 'glyphicon-star-empty'"></div>
+            </a>
+            <a href="#!/messages" title="{{user.sys_messages_count}} new messages">
+               <span>{{user.sys_messages_count}} </span><div class="glyphicon glyphicon-envelope"></div>
+            </a>
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-4">
+            <a href="#!/profile" title="Edit profile"><div class="glyphicon glyphicon-user"></div></a>
+            <a href="logout.php" title="Logout"><div class="glyphicon glyphicon-log-out"></div></a>
+        </div>
+
+    </div>
+
+
+
+
+<div ui-view class="content"></div>
+
+
+
+
+
+</div>
+
+<script src="js/lib/jquery-3.1.1.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/angular.min.js"></script>
+<script src="js/lib/angular-resource.min.js"></script>
+<script src="js/lib/angular-ui-router.min.js"></script>
+<script src="js/app/userContr.js"></script>
+<script src="js/app/galleryContr.js"></script>
+<script src="js/app/imgContr.js"></script>
+<script src="js/app/loaderContr.js"></script>
+<script src="js/app/sysMesContr.js"></script>
+<script src="js/app/profileContr.js"></script>
+<script src="js/app/main.js"></script>

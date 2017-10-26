@@ -1,0 +1,157 @@
+<div ng-controller="sysMesContr">
+
+    <div class="col-md-12 col-xs-12 margin">
+        <div class="section">Favorites:</div>
+        <div ng-repeat="item in sysMessages | filter:'favorites'">
+            <div class="system-message">
+                <span class="glyphicon glyphicon-remove remove-mes pointer"
+                      ng-click="deleteMessage(item)"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <a ng-href="#!/user/{{item.attr.user_id}}">{{item.attr.name}}</a>
+                added your image
+                <a ng-href="#!/image/{{item.attr.image_id}}">{{item.attr.title}}</a>
+                in their <a ng-href="#!/user/{{item.attr.user_id}}/favorites">Favorites</a>
+                on {{item.attr.date}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-xs-12 margin">
+        <div class="section">Comments:</div>
+        <div ng-repeat="item in sysMessages | filter:'comments'">
+            <div class="system-message">
+                <a ng-href="#!/user/{{item.attr.user_id}}">{{item.attr.name}}</a>
+                has added comment to your image
+                <a ng-href="#!/image/{{item.attr.image_id}}">{{item.attr.title}}</a>
+                on {{item.attr.date}}:
+            </div>
+            <div class="line"></div>
+
+            <div class="comment-block col-md-12 col-xs-12">
+
+                <div class="comment">
+
+                    <img class="avatar hidden-xs" ng-src="content/users/avatar/{{item.attr.avatar}}">
+                    <div>
+
+                        <div class="name"><a ng-href="#!/user/{{item.user_id}}">{{item.attr.name}}</a>
+                            <div class="date">{{item.attr.date}}</div></div>
+
+
+                        <div class="body">
+                            <div class="body-text">{{item.attr.body}}</div>
+
+                            <div class="button-block margin-av">
+                                <div class="button left pointer"
+                                     ng-click="answerTo(item)">
+                                    Answer
+                                </div><div
+                                    class="button right pointer"
+                                    ng-click="deleteMessage(item)">
+                                Remove
+                            </div>
+                            </div>
+                            <div ng-show="newComment.answerTo===item.attr.comment_id">
+                                <textarea  class="textarea margin" ng-model="newComment.body"></textarea>
+                                <div class="button-block margin-av">
+                                    <div class="button left pointer"
+                                         ng-click="addComment(item)">Send</div><div
+                                        class="button right pointer"
+                                        ng-click="newComment={}">Hide</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div ng-repeat="item in sysMessages | filter:'answers'">
+            <div class="system-message">
+                <a ng-href="#!/user/{{item.attr.user_id}}">{{item.attr.name}}</a>
+                has answered you on the image
+                <a ng-href="#!/image/{{item.attr.image_id}}">{{item.attr.title}}</a>
+                on {{item.attr.date}}:
+            </div>
+            <div class="line"></div>
+
+            <div class="comment-block col-md-12 col-xs-12">
+
+                <div class="comment">
+
+                    <img class="avatar hidden-xs" ng-src="content/users/avatar/{{item.attr.avatar}}">
+                    <div>
+
+                        <div class="name"><a ng-href="#!/user/{{item.user_id}}">{{item.attr.name}}</a>
+                            <div class="date">{{item.attr.date}}</div></div>
+
+
+                        <div class="body">
+                            <div class="body-text">{{item.attr.body}}</div>
+
+                            <div class="button-block margin-av">
+                                <div class="button left pointer"
+                                     ng-click="answerTo(item)">
+                                    Answer
+                                </div><div
+                                    class="button right pointer"
+                                    ng-click="deleteMessage(item)">
+                                    Remove
+                                </div>
+                            </div>
+                            <div ng-show="newComment.answerTo===item.attr.comment_id">
+                                <textarea  class="textarea margin" ng-model="newComment.body"></textarea>
+                                <div class="button-block margin-av">
+                                    <div class="button left pointer"
+                                         ng-click="addComment(item)">Send</div><div
+                                        class="button right pointer"
+                                        ng-click="newComment={}">Hide</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="col-md-12 col-xs-12 margin">
+        <div class="section">Subscribes:</div>
+        <div class="col-md-3 col-sm-4 col-xs-6 centered" ng-repeat="item in sysMessages | filter:'subscribes'">
+
+
+            <div class="system-message">
+                <div><a ng-href="#!/user/{{item.attr.user_id}}">
+                    <img class="avatar" ng-src="content/users/avatar/{{item.attr.avatar}}">
+                </a></div>
+                <div>{{item.attr.name}}<span class="glyphicon glyphicon-remove remove-mes pointer"
+                                              ng-click="deleteMessage(item)"></span></div>
+                <div>{{item.attr.date}}</div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>

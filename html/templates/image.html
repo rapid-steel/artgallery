@@ -1,0 +1,157 @@
+<div ng-controller="imgContr">
+
+    <div class="button-block col-md-12 margin">
+
+        <div class="button left col-md-4 col-xs-4">Fav<span class="hidden-xs">orites</span>: {{image.fav_n}}</div>
+
+        <div class="button col-md-4 col-xs-4">Com<span class="hidden-xs">ments</span>: {{image.com_n}}</div>
+
+        <div class="button right col-md-4 col-xs-4 pointer" ng-hide="user.user_id==image.user_id"
+             ng-switch="user.favorites.indexOf(image.image_id)">
+            <div ng-switch-when="-1"
+                 ng-click="addToFav()">
+                <span class="glyphicon glyphicon-star-empty visible-xs"></span>
+                <span class="hidden-xs">Add to Favorites</span>
+            </div>
+            <div ng-switch-default
+                 ng-click="removeFromFav()">
+                <span class="glyphicon glyphicon-star visible-xs"></span>
+                <span class="hidden-xs">Remove from Favorites</span>
+            </div>
+        </div>
+
+        <div ng-show="user.user_id==image.user_id">
+            <div class="button col-md-2 col-xs-2 pointer"
+                 ng-click="editImage()">
+                Edit
+            </div>
+            <div class="button right col-md-2 col-xs-2 pointer"
+                 ng-click="deleteImage()">
+                Delete
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="center-container">
+        <img class="img-thumbnail" src=""
+             ng-src="content/{{image.filename}}">
+    </div>
+
+    <div class="center-container image-title margin">
+        {{image.title}}
+    </div>
+
+    <div class="center-container name image-name">
+        <a ng-href="#!/user/{{image.user_id}}">{{image.name}}</a>
+    </div>
+
+    <div class="center-container">
+        <div class="tag"
+             ng-repeat="item in image.tags">
+            <a ng-href="#!/user/{{pageParams.user_id}}/tagged/{{item}}">{{item}}</a>
+        </div>
+
+    </div>
+
+    <div class="center-container description">
+        {{image.description}}
+    </div>
+
+    <div class="center-container date">
+        {{image.date}}
+    </div>
+
+    <div class="button-block col-md-12 col-xs-12 margin">
+        <div class="button left col-md-3 col-xs-3 col-xs-offset-3 col-md-offset-3 pointer" ng-click="viewTree()">
+            <span class="hidden-xs">Tree View</span>
+            <span class="glyphicon glyphicon-tree-conifer visible-xs"></span>
+        </div>
+        <div class="button right col-md-3 col-xs-3 pointer" ng-click="viewPlain()">
+            <span class="hidden-xs">Plain View</span>
+            <span class="glyphicon glyphicon-list visible-xs"></span>
+        </div>
+    </div>
+
+
+    <div class="comment-block col-md-12 col-xs-12 margin width-auto">
+
+        <div class="comment"  ng-repeat="item in comments" ng-style="{'left': getLeft(item)}">
+
+        <img class="avatar hidden-xs" ng-src="content/users/avatar/{{item.avatar}}">
+
+        <div>
+
+            <div class="name"><a ng-href="#!/user/{{item.user_id}}">{{item.name}}</a>
+                <div class="date">{{item.date}}</div></div>
+
+
+
+            <div class="body" ng-hide="editComMode==$index">
+                <div class="body-text">{{item.body}}</div>
+
+                <div class="button-block margin-av">
+                    <div class="button left right answer pointer"
+                         ng-click="newComment.answerTo=item.comment_id">
+                        Answer
+                    </div>
+                </div>
+
+                <div class="button-block">
+
+                    <div class="button left pointer" ng-show="item.user_id==user.user_id"
+                         ng-click="editComment($index)">Edit</div><div
+                        class="button right pointer"
+                        ng-show="item.user_id==user.user_id"
+                         ng-click="deleteComment($index)">Delete</div>
+
+                </div>
+
+            </div>
+
+            <div ng-show="editComMode==$index">
+                <textarea class="editArea textarea" ng-model="item.body"></textarea>
+                <div class="button-block">
+                    <div class="button left pointer"
+                         ng-click="saveComment($index)">
+                        Save
+                    </div><div
+                        class="button right pointer" ng-show="item.user_id==user.user_id"
+                        ng-click="deleteComment($index)">
+                        Delete
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+                <div ng-show="newComment.answerTo===item.comment_id">
+                    <textarea  class="textarea margin" ng-model="newComment.body"></textarea>
+                    <div class="button-block">
+                        <div class="button left pointer"
+                             ng-click="addComment()">Send</div><div
+                            class="button right pointer"
+                            ng-click="newComment.answerTo=0">Hide</div>
+                    </div>
+
+                </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="comment-form col-md-12 col-xs-12" ng-show="newComment.answerTo===0">
+        <textarea class="textarea col-md-offset-2 col-md-8 col-xs-12" ng-model="newComment.body"></textarea>
+        <div class="button-block col-md-offset-2 col-md-8 col-xs-12">
+            <div class="button right left answer pointer" ng-click="addComment()">Send</div>
+        </div>
+    </div>
+
+
+</div>

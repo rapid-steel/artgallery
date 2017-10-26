@@ -1,0 +1,158 @@
+<div ng-controller="galleryContr">
+
+    <div class="container-fluid userProfile"
+         ng-show="gallery.user!=''&&pageParams.mode!='fav'&&pageParams.mode!='sub'">
+
+        <div class="profile-pic"
+             ng-style="{'background-image': gallery.user.profilePath}">
+
+            <div class="col-md-6">
+
+                <div class="profile-info" ng-show="gallery.user.location">
+                    <div>Location:</div><div>{{gallery.user.location}}</div>
+                </div>
+                <div class="profile-info" ng-show="gallery.user.age">
+                    <div>Age:</div><div>{{gallery.user.age}}</div>
+                </div>
+                <div class="profile-info" ng-show="gallery.user.specialisation">
+                    <div>Specialisation:</div><div>{{gallery.user.specialisation}}</div>
+                </div>
+                <div class="profile-info" ng-show="gallery.user.bio">
+                    <div>About:</div><div class="extended">{{gallery.user.bio}}</div>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="profile-info" ng-show="gallery.user.interests">
+                    <div>Interests:</div><div class="extended">{{gallery.user.interests}}</div>
+                </div>
+                <div class="profile-info" ng-show="gallery.user.fav_artists">
+                    <div>Favorite artists:</div><div class="extended">{{gallery.user.fav_artists}}</div>
+                </div>
+                <div class="profile-info" ng-show="gallery.user.fav_techniques">
+                    <div>Favorite techniques:</div><div class="extended">{{gallery.user.fav_techniques}}</div>
+                </div>
+                <div class="profile-info" ng-show="gallery.user.inspiration">
+                    <div>Inspiration:</div><div class="extended">{{gallery.user.inspiration}}</div>
+                </div>
+
+            </div>
+
+
+
+            <div class="name-avatar">
+                <div class="avatar">
+                    <img ng-src="content/users/avatar/{{gallery.user.avatar}}">
+                </div>
+                <div ng-show="pageParams.user_id!=user.user_id&&pageParams.user_id!=-1"
+                     ng-switch="user.subscribes.indexOf(pageParams.user_id)">
+                    <div title="Subscribe" class="pointer sub name"
+                         ng-switch-when="-1"
+                         ng-click="subscribe()">
+                        {{gallery.user.name}}
+                    </div>
+                    <div title="Unsubscribe" class="pointer sub name"
+                         ng-switch-default
+                         ng-click="unsubscribe()">
+                        <div class="glyphicon glyphicon-tree-conifer small"></div>
+                        {{gallery.user.name}}
+                        <div class="glyphicon glyphicon-tree-conifer small"></div>
+                    </div>
+                </div>
+                <div class="cursor-default name" ng-show="pageParams.user_id==user.user_id">
+                    {{gallery.user.name}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="search" ng-show="gallery.user==''&&pageParams.tag==''">
+
+        <input type="text"
+               ng-model="gallery.search"
+               ng-keypress="searchOnEnter($event)">
+        <a ng-href="{{gallery.search? '#!/search/' + gallery.search : ''}}">
+            <div class="glyphicon glyphicon-search pointer"></div>
+        </a>
+
+    </div>
+
+    <div class="main-page-menu" ng-show="pageParams.mode=='recent'">
+        <a href="#!/popular"><div>Popular</div></a>
+        <div class="cursor-default">Recent</div>
+    </div>
+
+    <div class="main-page-menu" ng-show="pageParams.mode=='popular'">
+        <div class="cursor-default">Popular</div>
+        <a href="#!/recent"><div class="pointer">Recent</div></a>
+    </div>
+
+    <div class="system-message centered col-md-12 col-xs-12" ng-show="messages.delete">
+        Image {{messages.delete}} is successfully deleted.
+        <div ng-click="messages.delete=false">Close</div>
+    </div>
+
+
+    <div class="center-container">
+
+        <div class="tag" ng-repeat="(key, value) in gallery.tagSize"
+             ng-style="{'font-size': value}">
+            <a ng-href="#!/{{pageParams.user_id!=-1? 'user/' + pageParams.user_id + '/' : ''}}{{pageParams.mode=='fav'? 'favorites/' : ''}}tagged/{{key}}">{{key}}</a>
+        </div>
+
+        <div class="tag tag-single" ng-show="pageParams.tag">
+            <a ng-href="#!/tagged/{{pageParams.tag}}">
+                <div class="glyphicon glyphicon-tree-conifer small"></div>
+                {{pageParams.tag}}
+                <div class="glyphicon glyphicon-tree-conifer small"></div>
+            </a>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="gallery-container">
+    <div class="col-md-3 col-xs-6 col-sm-4 gallery-item"
+         ng-repeat="item in gallery.images">
+
+        <div class="username">
+            <div class="glyphicon glyphicon-star-empty"
+                 ng-show="user.subscribes.indexOf(item.user_id)!=-1"></div>
+            {{item.name}}
+        </div>
+
+        <a ng-href="#!/image/{{item.image_id}}">
+            <img class="img-thumbnail img" src="" ng-src="content/thumbnails/thumb_{{item.filename}}">
+        </a>
+
+
+
+        <div class="title">
+            <div class="glyphicon glyphicon-bookmark"
+                 ng-show="user.favorites.indexOf(item.image_id)!=-1"></div>
+            {{item.title}}
+        </div>
+
+
+        <div class="delete-from-sub pointer"
+             ng-show="pageParams.mode=='sub'">
+            <div class="glyphicon glyphicon-remove" title="Remove from subscribes"
+                 ng-click="removeSub(item.sm_id, $index)"></div>
+        </div>
+
+    </div>
+
+    <div class="empty-gallery" ng-show="gallery.images.length==0">
+        No images
+    </div>
+    </div>
+
+
+
+
+</div>

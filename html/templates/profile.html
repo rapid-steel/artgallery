@@ -1,0 +1,105 @@
+<div class="col-md-12 col-sm-12 col-xs-12 margin"
+     ng-controller="profileContr">
+
+
+<form name="profileForm" novalidate>
+
+    <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 centered">
+
+        <div class="system-message width-100">
+            Avatar:
+        </div>
+        <label class="label" for="avatar">
+            <div class="avatar-img" title="Click to browse new avatar">
+                <img  ng-src="content/users/avatar/{{profile.avatar}}">
+            </div>
+        </label>
+        <input class="loadImg" id="avatar" type="file" accept="image/*">
+
+        <div class="system-message width-100">
+            Date of Birth:
+        </div>
+        <input class="input width-100" type="text" id="birthdate" name="birthdate"
+               ng-model="profile.birthdate">
+
+        <div class="system-message width-100">
+            Location:
+        </div>
+        <input class="input width-100" type="text" name="location"
+               ng-model="profile.location">
+
+        <div class="system-message width-100">
+            Artistic specialisation:
+         </div>
+        <input class="input width-100" type="text" name="specialisation"
+               ng-model="profile.specialisation">
+
+        <div class="system-message width-100">
+            About you:
+        </div>
+        <textarea class="textarea width-100"
+                  ng-model="profile.bio">
+        </textarea>
+
+        <div class="system-message width-100">
+            Interests:
+        </div>
+        <textarea class="textarea width-100"
+                  ng-model="profile.interests">
+        </textarea>
+
+        <div class="system-message width-100">
+            Favorite artists:
+        </div>
+        <textarea class="textarea width-100"
+                  ng-model="profile.fav_artists">
+        </textarea>
+        <div class="system-message width-100">
+            Favorite artistic techniques:
+        </div>
+        <textarea class="textarea width-100"
+                  ng-model="profile.fav_techniques">
+        </textarea>
+
+        <div class="system-message width-100">
+            Inspiration:
+         </div>
+        <textarea class="textarea width-100"
+                  ng-model="profile.inspiration">
+        </textarea>
+
+        <div class="system-message width-100">
+            Profile picture:
+         </div>
+        <label for="profile">
+            <div class="file-img" title="Click to browse new profile picture">
+                <img  ng-src="content/users/profile/{{profile.profile}}">
+            </div>
+        </label>
+        <input class="loadImg" id="profile" type="file" accept="image/*">
+
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 button-block centered">
+            <div class="button left right button-long" ng-click="saveProfile()">
+                Save
+            </div>
+        </div>
+
+
+
+        <div  class="system-message" ng-show="profMessages.ok">Data are successfully saved</div>
+        <div class="system-message" ng-show="profMessages.error">Error!</div>
+
+
+    </div>
+
+
+
+
+
+</form>
+
+</div>
+
+
+
+<script src="js/lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>

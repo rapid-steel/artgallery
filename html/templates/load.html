@@ -1,0 +1,69 @@
+<div class="col-md-12 col-sm-12 col-xs-12 margin" id="loader"
+     ng-controller="loaderContr">
+
+
+    <form method="post" name="loaderImage" enctype="multipart/form-data"
+          ng-model="loaderImage" novalidate>
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+            <input class="input width-100" type='text' name="title" placeholder="Enter title"
+                   ng-model="loader.title"
+                   value="{{loader.image.title || ''}}" required>
+        </div>
+
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+            <label class="label" for="loadImg" ng-switch="loader.loadedImage">
+                <div class="file-empty"
+                     ng-switch-when="0">
+                    Click to browse image
+                </div>
+                <div class="file-empty"
+                     ng-switch-when="1">
+                    Loading
+                </div>
+                <div class="file-img"
+                     ng-switch-default>
+                    <img  ng-src="tmp/{{loader.loadedImage}}">
+                </div>
+            </label>
+            <input id="loadImg" name="file"
+                   ng-model="loader.file" type="file" accept="image/*">
+        </div>
+
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+            <textarea class="textarea width-100" name="description" placeholder="Enter description"
+                  ng-model="loader.description">
+            {{loader.image.description || ''}}
+            </textarea>
+        </div>
+
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+            <input class="input width-100" type='text' name="tags" placeholder="Enter tags"
+               ng-model="loader.tags">
+        </div>
+        <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 button-block centered margin">
+            <input type="button" value="Load image" class="button button-long right left"
+               ng-hide="loader.mode=='edit'"
+               ng-disabled="image.$invalid"
+               ng-click="loadNewImg()">
+            <input type="button" value="Save image"
+               ng-show="loader.mode=='edit'"
+               ng-disabled="image.$invalid"
+               ng-click="saveImg()">
+         </div>
+    </form>
+
+    <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 system-message" ng-show="loader.messages.saved">
+        Image is successfully uploaded.
+        <a ng-href="#!/image/{{loader.image_id}}"><div>Go to the image page</div></a>
+        <a href="#!/load" ng-click="restart()"><div>Submit one more image</div></a>
+    </div>
+
+    <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 system-message" ng-show="loader.messages.updated">
+        Image is successfully updated.
+        <a ng-href="#!/image/{{loader.image_id}}"><div>Go to the image page</div></a>
+        <a href="#!/load"><div>Submit one more image</div></a>
+    </div>
+
+
+
+</div>

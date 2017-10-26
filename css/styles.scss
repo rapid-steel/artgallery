@@ -1,0 +1,732 @@
+@import url(http://allfont.ru/allfont.css?fonts=grunge);
+@import url(http://allfont.ru/allfont.css?fonts=dreamscar);
+@import url(http://allfont.ru/allfont.css?fonts=teslics-document-cyr-normal);
+
+@font-face {
+  font-family: Demon;
+  src: url(http://localhost/fonts/DEMON_NI.ttf);
+}
+
+@font-face {
+  font-family: Manson;
+  src: url(http://localhost/fonts/Manson_Nights.ttf);
+}
+
+@font-face {
+  font-family: Bloody;
+  src: url(http://localhost/fonts/Bloody_Stump.ttf);
+}
+
+@font-face {
+  font-family: Beurk;
+  src: url(http://localhost/fonts/Beurk___.ttf);
+}
+
+
+@font-face {
+  font-family: Vtks;
+  src: url(http://localhost/fonts/Vtks_Espinhuda.ttf);
+}
+
+@font-face {
+  font-family: 'Black Metal';
+  src: url(http://localhost/fonts/Black_metal.ttf);
+}
+
+@font-face {
+  font-family: 'Diediedie';
+  src: url(http://localhost/fonts/DIEDIEDI.ttf);
+}
+
+@font-face {
+  font-family: 'Ghastly Panic';
+  src: url(http://localhost/fonts/Ghastly_Panic.ttf);
+}
+
+@keyframes bk2 {
+  0% { opacity: 1; }
+  75% { opacity: 1; }
+  80% { opacity: 0; }
+  99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bk3 {
+  0% { opacity: 1; }
+  55% { opacity: 1; }
+  60% { opacity: 0; }
+  99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bk4 {
+  0% { opacity: 1; }
+  35% { opacity: 1; }
+  40% { opacity: 0; }
+  99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bk5 {
+  0% { opacity: 1; }
+  15% { opacity: 1; }
+  20% { opacity: 0; }
+  95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+@mixin animation($name) {
+  animation-name: $name;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+
+#container{
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  height: 80%;
+  @media only screen and (max-width: 750px) {
+    top: 0;
+    height: 100%;
+  }
+
+  & > div {
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+}
+
+#form {
+  left: 33%;
+  z-index: 10;
+  width: 33%;
+  text-align: center;
+  font-family: 'Demon', sans-serif;
+  font-size: 30px;
+  color: white;
+  text-shadow: 1px 1px 0 black, -1px -1px 0 black;
+
+  @media only screen and (max-width: 750px) {
+    left: 0;
+    width: 100%;
+  }
+
+
+  input[type=text], input[type=password], input[type=email] {
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+    font-family: 'Bloody', sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: black;
+    border: rgba(255,255,255,.4) 1px solid;
+    border-radius: 10px;
+  }
+
+  input[type=button], input[type=submit] {
+    display: inline-block;
+    width: 48%;
+    font-family: 'Manson', cursive;
+    font-size: 50px;
+    line-height: 60px;
+    color: white;
+    background-color: black;
+    border: rgba(255,255,255,.4) 1px solid;
+    border-radius: 10px;
+  }
+}
+
+.inputForm {
+  height: 85px;
+}
+
+.logError {
+  height: 30px;
+}
+
+.message {
+  font-family: 'Beurk', cursive;
+  font-size: 15px;
+  color: red;
+  text-shadow: none;
+}
+
+.wide {
+  width: 100%!important;
+  margin-bottom:5px;
+}
+.to-left { float: left; }
+.to-right { float: right; }
+
+
+.background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  .left, .right {
+    width: 25%;
+  }
+}
+
+.left {
+  left:0;
+}
+
+.right {
+  right:0;
+}
+
+.b1 {
+  background-image: url("img/back1.jpg");
+}
+.b2 {
+  background-image: url("img/back2.jpg");
+  @include animation(bk2);
+}
+.b3 {
+  background-image: url("img/back3.jpg");
+  @include animation(bk3);
+}
+.b4 {
+  background-image: url("img/back4.jpg");
+  @include animation(bk4);
+}
+.b5 {
+  background-image: url("img/back5.jpg");
+  @include animation(bk5);
+}
+
+
+.overlay {
+  width: 25%;
+  height: 100%;
+  background-color: rgba(255,255,255,.50);
+}
+
+.center {
+  left: 15%;
+  width: 75%;
+  background-position: center;
+  border-radius: 45px;
+  @media only screen and (max-width: 768px) {
+    left: 0;
+    width: 100%;
+  }
+}
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  div {
+    padding: 0 2px;
+    text-align: center;
+  }
+  font-family: 'Demon', cursive;
+  font-size: 18px;
+  .small { font-size: 14px; }
+  color: white;
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  background-color: black;
+}
+
+.content {
+  width: 100%;
+  margin-top: 20px;
+  @media only screen and (max-width: 767px) {
+    margin-top: 44px;
+  }
+}
+
+
+.main-page-menu {
+  width: 100%;
+  div {
+    display: inline-block;
+    padding: 0 15px;
+    background-color: black;
+    border-radius: 24px;
+  }
+  font-family: 'Vtks', cursive;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: black;
+    text-decoration: none;
+    div { background-color: white; }
+  }
+}
+
+.pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+
+.search {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
+  input {
+    width: 160px;
+    padding: 0 5px;
+    font-size: 16px;
+    font-family: 'Pangolin', cursive;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 15px;
+  }
+}
+
+.userProfile {
+  min-height: 666px;
+  padding: 0;
+}
+
+.profile-pic {
+  position: relative;
+  width: 100%;
+  padding-top:10px;
+  min-height: 540px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.profile-info {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+  font-family: 'Diediedie', cursive;
+  font-size: 24px;
+  text-align: center;
+  line-height: 36px;
+  white-space: nowrap;
+  div {
+    display: inline-block;
+    vertical-align: text-top;
+    border: rgba(255,255,255,.35) 1px solid;
+    border-radius: 15px;
+    &:first-child {
+      width: 240px;
+      text-align: right;
+      color: white;
+      background-color: black;
+      padding-right: 5px;
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:nth-child(2) {
+      min-width: 180px;
+      color: black;
+      text-align: left;
+      background-color: rgba(255,255,255,.25);
+      padding-left: 5px;
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      &.extended {
+        white-space: pre;
+      }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 16px;
+    line-height: 24px;
+    div:first-child {
+      width: 160px;
+    }
+  }
+}
+
+.name {
+  width: 100%;
+  text-align: center;
+  font-family: "Black Metal", "DreamScar", cursive;
+}
+
+.name-avatar {
+  position: absolute;
+  left: 0;
+  bottom: -110px;
+  width: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-size: 60px;
+  .sub {
+    display: inline-block;
+    width: auto;
+  }
+  .small { font-size: 24px; }
+  .avatar {
+    img{
+      max-width: 150px;
+      max-height: 150px;
+    }
+  }
+}
+
+.center-container {
+  width: 100%;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  margin: 5px;
+  font-family: 'Grunge', cursive;
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+.tag-single {
+  font-size: 30px;
+  .small { font-size: 20px; }
+}
+
+.gallery-container{
+  position: relative;
+}
+
+.gallery-item {
+  position: relative;
+  padding: 5px;
+  height: 310px;
+  text-align: center;
+  line-height: 310px;
+
+  .title,
+  .username,
+  .delete-from-sub {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    font-family: 'Teslic`s Document Cyr Normal', cursive;
+    color: black;
+    text-shadow: 1px 1px 0 white,  -1px 1px 0 white,  1px -1px 0 white,  -1px -1px 0 white;
+
+    text-align: center;
+    font-size: 14px;
+    line-height: 60px;
+    opacity: 0;
+    div {
+      color: white;
+      text-shadow: 1px 1px 0 black,  -1px 1px 0 black,  1px -1px 0 black,  -1px -1px 0 black;
+    }
+  }
+
+  &:hover .title,
+  &:hover .username,
+  &:hover .delete-from-sub {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s;
+       -moz-transition: opacity 0.5s;
+         -o-transition: opacity 0.5s;
+            transition: opacity 0.5s;
+  }
+
+  .title {bottom: 0;}
+  .username {top: 0;}
+
+  .delete-from-sub {
+    text-align: right;
+    top: 0;
+  }
+
+  .img {
+   display: inline-block;
+   width: auto;
+   height: auto;
+   max-height: 300px;
+  }
+}
+
+.empty-gallery {
+  font-size: 24px;
+  font-family: 'Diediedie', cursive;
+  text-align: center;
+  color: rgba(0,0,0,0.5);
+}
+
+.image-name {
+  margin-top: 30px;
+  font-size: 40px;
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
+
+}
+
+.margin { margin-top: 50px; }
+
+.image-title {
+  font-family: "Ghastly Panic", "Grunge", cursive;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.button-block {
+  .button {
+    padding: 0;
+    height: 30px;
+    font-family: 'Beurk', 'DreamScar', cursive;
+    font-size: 24px;
+    text-align: center;
+    line-height: 30px;
+    white-space: nowrap;
+    @media only screen and (max-width: 450px) {
+      font-size: 16px;
+    }
+    color: white;
+    border: 1px rgba(255,255,255,.25) solid;
+    background-color: black;
+    &.left {
+      border-top-left-radius: 18px;
+      border-bottom-left-radius: 18px;
+    }
+    &.right {
+      border-top-right-radius: 18px;
+      border-bottom-right-radius: 18px;
+    }
+  }
+}
+
+.answer {
+  display: block!important;
+  width: 150px!important;
+  margin-right: 10px!important;
+}
+
+.width-auto { width: auto; }
+.width-100  { width: 100%; }
+
+.date {
+  font-family: 'DreamScar', cursive;
+  font-size: 14px;
+  color: rgba(0,0,0,.5);
+}
+
+.description {
+  font-family: 'Teslic`s Document Cyr Normal', cursive;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.comment-block {
+
+  .body-text {
+    width: auto;
+    min-height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .button-block {
+    white-space: nowrap;
+  }
+  .button {
+    display: inline-block;
+    width: 100px;
+    @media only screen and (max-width: 450px) {
+      width: 70px!important;
+      &.answer {
+        width: 100px!important;
+      }
+    }
+    margin-top: 10px;
+  }
+  .answer { float: left; }
+  .comment {
+    position: relative;
+    display: block;
+    min-height: 120px;
+    margin-bottom: 25px;
+    .name {
+      font-family: 'Beurk', 'DreamScar', cursive;
+      font-size: 20px;
+      text-align: left;
+    }
+    .date { display: inline-block; }
+    .body {
+      font-family: 'Teslic`s Document Cyr Normal', cursive;
+      font-size: 16px;
+    }
+    a,
+    a:hover,
+    a:active,
+    a:visited {
+      color: black;
+      text-decoration: none;
+    }
+    .avatar {
+      float: left;
+      width: auto;
+      margin: 10px;
+      margin-right: 25px;
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+
+}
+
+.margin-av {
+  @media only screen and (min-width: 768px) {
+    margin-left: 135px;
+  }
+}
+
+.comment-form {
+  margin-top: 15px;
+  padding: 0;
+  .button-block {
+    text-align: center;
+  }
+  .button {
+    display: inline-block!important;
+  }
+}
+
+.line {
+  width: 40%;
+  @media only screen and (max-width: 767px) { width: 100%; }
+  height: 0;
+  margin-bottom: 15px;
+  border: 1px rgba(0,0,0,.5) solid;
+}
+
+.section {
+  width: 100%;
+  padding-left: 20px;
+  @media only screen and (max-width: 767px) {
+    padding: 0;
+    text-align: center;
+  }
+  font-family: 'Manson', cursive;
+  font-size: 25px;
+}
+
+.centered {
+  text-align: center;
+  .system-message {
+    display: inline-block;
+  }
+}
+
+.system-message {
+  width: 100%;
+  margin-top: 10px;
+  font-family: 'Beurk', 'DreamScar', sans-serif;
+  font-size: 16px;
+  div {
+    display: block;
+    width: 100%;
+  }
+  .remove-mes { opacity:0; }
+  &:hover .remove-mes {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s;
+       -moz-transition: opacity 0.5s;
+         -o-transition: opacity 0.5s;
+            transition: opacity 0.5s;
+  }
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    font-family: 'DreamScar', sans-serif;
+    color: black;
+    text-decoration: none;
+  }
+  .avatar {
+    width: auto;
+    margin-bottom: 10px;
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.textarea {
+  min-width: 300px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.input, .textarea {
+  padding: 0;
+  font-family: 'Teslic`s Document Cyr Normal', cursive;
+  font-size: 16px;
+  border: 1px rgba(0,0,0,.25) solid;
+  border-radius: 10px;
+}
+
+.label { width: 100%; }
+
+.file-empty, .file-img, .avatar-img {
+  border: 3px rgba(0,0,0,.5) dashed;
+  border-radius: 10px;
+}
+
+.file-empty {
+  color: rgba(0,0,0,.5);
+  font-family: 'Ghastly Panic', cursive;
+  font-size: 40px;
+  line-height: 100px;
+}
+
+.file-img img, .avatar-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.avatar-img {
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+
+.button-long {
+  width: 200px;
+  @media only screen and (max-width: 450px) { width: 130px; }
+}
+
+
